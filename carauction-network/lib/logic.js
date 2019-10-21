@@ -24,7 +24,12 @@ async function sampleTransaction(tx) {
     // Save the old value of the asset.
     const newlender= tx.newlender
 	
-	tx.Board.lender.push(newlender)
+    tx.Board.lender.push(newlender)
+    
+    if(!tx.Board.lender){
+        tx.Board.lender = [newlender,]
+      }
+
     
     
     
