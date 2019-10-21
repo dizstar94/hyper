@@ -32,7 +32,7 @@ asset Board identified by boardId   {
   o String descryption
   o String createdat
   o String duedate
-  o Participant[] lender 
+  o String[] lender 
   o ListingState state default ="PAUSE"
  
 }

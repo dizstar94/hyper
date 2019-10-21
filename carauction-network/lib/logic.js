@@ -12,32 +12,53 @@
  * limitations under the License.
  */
 
-/* global getAssetRegistry getParticipantRegistry */
+'use strict';
+/**
+ * Write your transction processor functions here
+ */
 
 /**
- * Close the bidding for a car listing and choose the
- * highest bid that is over the asking price
- * @param {com.betweak.carauction.CloseBidding} closeBidding - the closeBidding transaction
+ * Sample transaction
+ * @param {com.betweak.carauction.SampleTransaction} sampleTransaction
  * @transaction
  */
 async function sampleTransaction(tx) {
     // Save the old value of the asset.
     const newlender= tx.newlender
+    
+    tx.board.lender.push(newlender)
 	
-    tx.Board.lender.push(newlender)
+    // Board.lender=newlender
     
-    if(!tx.Board.lender){
-        tx.Board.lender = [newlender,]
-      }
 
-    
-    
-    
+
     // Get the asset registry for the asset.
     const BoardRegistry = await getAssetRegistry('com.betweak.carauction.Board');
+  
+ 
     // Update the asset in the asset registry.
-    await BoardRegistry.update(tx.Board);
+    await BoardRegistry.update(tx.board);
 
    
 }
+/*
+async function sampleTransaction(tx) {
+    // Save the old value of the asset.
+    const oldValue = tx.asset.value;
 
+    // Update the asset with the new value.
+    tx.asset.value = tx.newValue;
+
+    // Get the asset registry for the asset.
+    const assetRegistry = await getAssetRegistry('com.betweak.carauction.SampleAsset');
+    // Update the asset in the asset registry.
+    await assetRegistry.update(tx.asset);
+
+    // Emit an event for the modified asset.
+    let event = getFactory().newEvent('com.betweak.carauction', 'SampleEvent');
+    event.asset = tx.asset;
+    event.oldValue = oldValue;
+    event.newValue = tx.newValue;
+    emit(event);
+}
+*/
