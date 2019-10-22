@@ -1,0 +1,37 @@
+namespace com.betweak.carauction
+
+participant SampleParticipant identified by participantId {
+  o String participantId
+  o String email
+  o String Name
+  o String register
+}
+
+asset Board identified by boardId   {
+  o String boardId
+  --> SampleParticipant participantId
+  o String purpose
+  o String descryption
+  o String createdat
+  o String duedate
+  o String[] lender 
+  o ListingState state default ="PAUSE"
+ 
+}
+  
+  
+  
+enum ListingState{
+  o PAUSE
+  o STOPPED
+  o ONSALE   
+}
+  
+  
+transaction SampleTransaction {
+  -->Board board
+  o String newlender
+}
+
+
+
