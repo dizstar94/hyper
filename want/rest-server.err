@@ -1,0 +1,4 @@
+Unhandled error for request POST /api/Board: Error: Error trying invoke business network with transaction id b653d09e9e3ac67fddab0d839d748fab8600ead9c4878106725bc17f3768919f. Error: No valid responses from any peers.
+Response from attempted peer comms was an error: Error: transaction returned with failure: Error: Failed to add object with ID 'Sat Nov 30 2019 00:00:00 GMT+0900 (한국 표준시)' in collection with ID 'Asset:com.betweak.carauction.Board' as the object already exists
+    at HLFConnection.invokeChainCode (/home/knight0930/.nvm/versions/node/v8.16.2/lib/node_modules/composer-rest-server/node_modules/composer-connector-hlfv1/lib/hlfconnection.js:1117:30)
+    at <anonymous>
